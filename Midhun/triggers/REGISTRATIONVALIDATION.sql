@@ -1,8 +1,0 @@
-CREATE OR REPLACE TRIGGER REGISTRATIONVALIDATION 
-BEFORE INSERT OR UPDATE OF EMAIL_ID ON REGISTRATION 
-FOR EACH ROW
-BEGIN
-  IF
-   NOT REGEXP_LIKE (:new.email_id, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$') THEN raise_application_error(-20003,'Invalid Email ID!');
-  END IF;
-END;
