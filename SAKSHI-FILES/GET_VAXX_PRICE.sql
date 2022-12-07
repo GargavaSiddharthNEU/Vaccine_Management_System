@@ -1,0 +1,59 @@
+--------------------------------------------------------
+--  File created - Tuesday-November-29-2022   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Function GET_VAXX_PRICE
+--------------------------------------------------------
+
+  CREATE OR REPLACE EDITIONABLE FUNCTION "APP_ADMIN"."GET_VAXX_PRICE" 
+(VAXX_NAME IN VARCHAR2 ) 
+RETURN NUMBER 
+IS 
+V_NAME VACCINE_DETAILS.VACCINE_NAME%TYPE;
+V_PRICE VACCINE_DETAILS.VACCINE_PRICE%TYPE;
+INVALID_VACCINE EXCEPTION;
+VALID_VACCINE EXCEPTION;
+
+BEGIN
+  SELECT COUNT(*) INTO V_NAME 
+  FROM VACCINE_DETAILS 
+  WHERE VACCINE_NAME = VAXX_NAME;
+  
+  IF V_NAME <=0
+  THEN 
+  RAISE INVALID_VACCINE;
+  END IF;
+  
+  SELECT VACCINE_PRICE INTO V_PRICE
+  FROM VACCINE_DETAILS
+  WHERE VACCINE_NAME = VAXX_NAME;
+  
+  RETURN V_PRICE;
+  
+  EXCEPTION
+  WHEN INVALID_VACCINE
+  THEN
+  raise_application_error(-20001, 'Invalid Vaccine Name');
+  RETURN -1;
+  WHEN VALID_VACCINE
+  THEN
+  raise_application_error(-20001, 'Valid Vaccine Name');
+  RETURN V_PRICE;
+  
+END GET_VAXX_PRICE;
+
+
+
+
+--STATEMENT TO EXECUTE THE FUNCTION
+--SET SERVEROUTPUT ON;
+
+--DECLARE
+--V_NAME VACCINE_DETAILS.VACCINE_NAME%TYPE;
+--V_PRICE VACCINE_DETAILS.VACCINE_PRICE%TYPE;
+--BEGIN
+--V_PRICE := GET_VAXX_PRICE ('MODERNA');
+--DBMS_OUTPUT.put_line (V_PRICE);
+--END;
+
+/
