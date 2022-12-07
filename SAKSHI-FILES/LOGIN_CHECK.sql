@@ -1,4 +1,12 @@
-CREATE OR REPLACE PROCEDURE LOGIN_CHECK
+--------------------------------------------------------
+--  File created - Tuesday-December-06-2022   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Procedure LOGIN_CHECK
+--------------------------------------------------------
+set define off;
+
+  CREATE OR REPLACE EDITIONABLE PROCEDURE "APP_ADMIN"."LOGIN_CHECK" 
 (USER_IN IN REGISTRATION.USERNAME%TYPE, 
  PASS_IN IN REGISTRATION.PASS_WORD%TYPE)
 AS
@@ -17,6 +25,8 @@ WHERE USERNAME = USER_IN;
 IF (PASS_USER = PASS_IN)
 THEN
 RAISE VALID_LOGIN;
+ELSE
+RAISE INVALID_LOGIN;
 END IF;
 ELSE
 RAISE INVALID_LOGIN;
@@ -31,3 +41,8 @@ THEN
 DBMS_OUTPUT.PUT_LINE('VALID LOGIN');
 
 END LOGIN_CHECK;
+
+/
+
+  GRANT EXECUTE ON "APP_ADMIN"."LOGIN_CHECK" TO "RECIPIENT";
+  GRANT DEBUG ON "APP_ADMIN"."LOGIN_CHECK" TO "RECIPIENT";
