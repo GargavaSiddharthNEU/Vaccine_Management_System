@@ -1,14 +1,15 @@
 # SEVA - Smart Extensive Vaccine Administration
 
 Database Used : **Oracle 19c**
+
 Language : **Oracle PL/SQL**
 
-## Problem Statement
+## Problem Statement :
 
 As the world faced the devastating effects of Covid-19, one key-way emerged to combat Covid was through the vaccine. 
 Vaccinations had to be administered to recipients by medical workers in a clinic/hospital. However, this entire process of vaccine administration became a challenge. An effective solution was required to streamline the mechanisms of recipients registering and billing; medical workers administering the vaccine in a clinic/hospital.
 
-## Objectives:
+## Objectives :
 
 1. Design a system that will streamline the process of recording vaccine distribution in a centralized, real time accessible manner
 2. Recording vaccinated patients in hospitals/vaccination centers
@@ -37,7 +38,7 @@ The vaccine management system is as follows:
 4. The record of the administered vaccine is updated on the vaccine record table by medical worker hence completing the vaccine administration cycle.
 5. App Admin is responsible for maintaining details about different participating hospitals and vaccination shots available
 
-## Entity Relationship Diagram 
+## Entity Relationship Diagram :
 
 ![ER Diagram](https://github.com/GargavaSiddharthNEU/Vaccine_Management_System/blob/main/ERD%20Diagram/ERD%20Diagram%20Vaccine%20Project.png?raw=true)
 
